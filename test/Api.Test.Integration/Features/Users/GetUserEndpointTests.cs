@@ -29,7 +29,7 @@ public class GetUserEndpointTests : IClassFixture<ApiWebFactory>
     }
 
     [Fact]
-    public async Task Get_User_by_ID_if_present()
+    public async Task Create_And_Get_User_by_ID_if_present()
     {
         // Arrange
         var user = _userRequestGenerator.Generate();
@@ -49,6 +49,23 @@ public class GetUserEndpointTests : IClassFixture<ApiWebFactory>
         response!.StatusCode.Should().Be(HttpStatusCode.OK);
         result.Should().NotBeNull();
         result!.Should().BeEquivalentTo(createdUser);
+    }
+    
+    [Fact]
+    public async Task Get_Existing_User_by_ID_if_present()
+    {
+        // Arrange
+        const int seededUserId = 1;
+        
+        // Act
+        var (response, result) = await _client
+            .GETAsync<Endpoint, GetUserRequest, GetUserResponse>(new(seededUserId));
+
+        // Assert
+        response.Should().NotBeNull();
+        response!.StatusCode.Should().Be(HttpStatusCode.OK);
+        result.Should().NotBeNull();
+        result!.Id.Should().Be(seededUserId);
     }
 
     [Fact]
