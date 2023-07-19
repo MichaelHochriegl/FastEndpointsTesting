@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WDsLyZN176k8bjHo/At7uPJ/0MFeNUWkL7N7wgPEuaKqlAToDIEX1173np11mXqv8ROYdJhvubk4V6xKn+KSXg==",
+  "dgSpecHash": "SVUz4q4AFiqm6gt5pJN28eBV8Hw1sUM2WBGdROqXdw4ZYm5395WV+0PMPBJlllv3+R/zXpJ+rOANIOfxmsraBA==",
   "success": true,
-  "projectFilePath": "/home/drcox1911/Coding/RiderProjects/20_Playgrounds/FastEndpointsTesting/src/Api/Api.csproj",
+  "projectFilePath": "/home/drcox1911/Coding/dotnet/20_Playgrounds/FastEndpointsTesting/src/Api/Api.csproj",
   "expectedPackageFiles": [
     "/home/drcox1911/.nuget/packages/fastendpoints/4.3.1/fastendpoints.4.3.1.nupkg.sha512",
     "/home/drcox1911/.nuget/packages/fastendpoints.security/4.3.1/fastendpoints.security.4.3.1.nupkg.sha512",
@@ -11,11 +11,11 @@
     "/home/drcox1911/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
     "/home/drcox1911/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/6.0.7/microsoft.aspnetcore.authentication.jwtbearer.6.0.7.nupkg.sha512",
     "/home/drcox1911/.nuget/packages/microsoft.csharp/4.5.0/microsoft.csharp.4.5.0.nupkg.sha512",
-    "/home/drcox1911/.nuget/packages/microsoft.entityframeworkcore/6.0.7/microsoft.entityframeworkcore.6.0.7.nupkg.sha512",
-    "/home/drcox1911/.nuget/packages/microsoft.entityframeworkcore.abstractions/6.0.7/microsoft.entityframeworkcore.abstractions.6.0.7.nupkg.sha512",
-    "/home/drcox1911/.nuget/packages/microsoft.entityframeworkcore.analyzers/6.0.7/microsoft.entityframeworkcore.analyzers.6.0.7.nupkg.sha512",
-    "/home/drcox1911/.nuget/packages/microsoft.entityframeworkcore.design/6.0.7/microsoft.entityframeworkcore.design.6.0.7.nupkg.sha512",
-    "/home/drcox1911/.nuget/packages/microsoft.entityframeworkcore.relational/6.0.7/microsoft.entityframeworkcore.relational.6.0.7.nupkg.sha512",
+    "/home/drcox1911/.nuget/packages/microsoft.entityframeworkcore/6.0.5/microsoft.entityframeworkcore.6.0.5.nupkg.sha512",
+    "/home/drcox1911/.nuget/packages/microsoft.entityframeworkcore.abstractions/6.0.5/microsoft.entityframeworkcore.abstractions.6.0.5.nupkg.sha512",
+    "/home/drcox1911/.nuget/packages/microsoft.entityframeworkcore.analyzers/6.0.5/microsoft.entityframeworkcore.analyzers.6.0.5.nupkg.sha512",
+    "/home/drcox1911/.nuget/packages/microsoft.entityframeworkcore.design/6.0.5/microsoft.entityframeworkcore.design.6.0.5.nupkg.sha512",
+    "/home/drcox1911/.nuget/packages/microsoft.entityframeworkcore.relational/6.0.5/microsoft.entityframeworkcore.relational.6.0.5.nupkg.sha512",
     "/home/drcox1911/.nuget/packages/microsoft.extensions.apidescription.server/6.0.3/microsoft.extensions.apidescription.server.6.0.3.nupkg.sha512",
     "/home/drcox1911/.nuget/packages/microsoft.extensions.caching.abstractions/6.0.0/microsoft.extensions.caching.abstractions.6.0.0.nupkg.sha512",
     "/home/drcox1911/.nuget/packages/microsoft.extensions.caching.memory/6.0.1/microsoft.extensions.caching.memory.6.0.1.nupkg.sha512",
@@ -84,7 +84,8 @@
     "/home/drcox1911/.nuget/packages/system.threading.tasks.extensions/4.0.0/system.threading.tasks.extensions.4.0.0.nupkg.sha512",
     "/home/drcox1911/.nuget/packages/system.xml.readerwriter/4.0.11/system.xml.readerwriter.4.0.11.nupkg.sha512",
     "/home/drcox1911/.nuget/packages/system.xml.xdocument/4.0.11/system.xml.xdocument.4.0.11.nupkg.sha512",
-    "/home/drcox1911/.nuget/packages/yamldotnet/11.2.1/yamldotnet.11.2.1.nupkg.sha512"
+    "/home/drcox1911/.nuget/packages/yamldotnet/11.2.1/yamldotnet.11.2.1.nupkg.sha512",
+    "/home/drcox1911/.nuget/packages/microsoft.netcore.app.host.linux-x64/6.0.18/microsoft.netcore.app.host.linux-x64.6.0.18.nupkg.sha512"
   ],
   "logs": []
 }
