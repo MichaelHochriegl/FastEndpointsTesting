@@ -19,10 +19,12 @@ public class CreateUserEndpointTests : IClassFixture<ApiWebFactory>
     private readonly HttpClient _client;
 
     // With this `Faker` from `Bogus` we will create realistic looking test-data
+    // As we are using `Records` we have to use the `CustomInstantiator` here
     private readonly Faker<CreateUserRequest> _userRequestGenerator = new Faker<CreateUserRequest>()
-        .RuleFor(x => x.FirstName, faker => faker.Name.FindName())
-        .RuleFor(x => x.LastName, faker => faker.Name.LastName())
-        .RuleFor(x => x.Email, faker => faker.Internet.Email());
+        .CustomInstantiator(faker => new CreateUserRequest(
+            faker.Name.FindName(),
+            faker.Name.LastName(),
+            faker.Internet.Email()));
 
     public CreateUserEndpointTests(ApiWebFactory apiWebFactory)
     {

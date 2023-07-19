@@ -67,7 +67,7 @@ public class ApiWebFactory : WebApplicationFactory<IApiMarker>, IAsyncLifetime
         await _database.StartAsync();
     }
 
-    public async Task DisposeAsync()
+    public new async Task DisposeAsync()
     {
         // Stop our Docker container with the Postgres DB
         await _database.DisposeAsync();

@@ -1,15 +1,5 @@
 namespace Api.Features.Users.GetUser;
 
-public class GetUserRequest
-{
-    public int Id { get; set; }
-}
+public record GetUserRequest(int Id);
 
-public class GetUserResponse
-{
-    public int Id { get; set; }
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-    public string Email { get; set; }
-    
-}
+public record GetUserResponse(int Id, string FirstName, string LastName, string Email);
