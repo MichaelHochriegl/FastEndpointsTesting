@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
+using Testcontainers.PostgreSql;
 using Xunit;
 
 namespace Api.Test.Integration;
@@ -25,14 +26,12 @@ namespace Api.Test.Integration;
 public class ApiWebFactory : WebApplicationFactory<IApiMarker>, IAsyncLifetime
 {
     // This defines our database container that will get spun up automatically for us for each test
-    private readonly TestcontainerDatabase _database = new TestcontainersBuilder<PostgreSqlTestcontainer>()
-        .WithDatabase(new PostgreSqlTestcontainerConfiguration
-        {
-            Database = "testDb",
-            Username = "testUser",
-            Password = "doesnt_matter"
-        })
+    private readonly PostgreSqlContainer _database = new PostgreSqlBuilder()
+        .WithDatabase("testDb")
+        .WithUsername("testUser")
+        .WithPassword("doesnt_matter")
         .Build();
+
 
     // We set up our test API server with this override
     protected override void ConfigureWebHost(IWebHostBuilder builder)
@@ -58,7 +57,7 @@ public class ApiWebFactory : WebApplicationFactory<IApiMarker>, IAsyncLifetime
             services.RemoveAll(typeof(ApiDbContext));
             
             // Register our DbContext with the test DB connection string provided from our container
-            services.AddPersistence(_database.ConnectionString);
+            services.AddPersistence(_database.GetConnectionString());
         });
     }
     
