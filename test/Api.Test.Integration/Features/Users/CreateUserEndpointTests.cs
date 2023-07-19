@@ -73,7 +73,7 @@ public class CreateUserEndpointTests : IClassFixture<ApiWebFactory>
         response.Should().NotBeNull();
         response!.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         result.Should().NotBeNull();
-        result!.Errors.Keys.Should().Contain(nameof(User.Email));
+        result!.Errors.Keys.Should().Contain(nameof(User.Email).ToLower());
     }
     
     // There are still a lot of cases left to test, they are pretty much the same structure though, so I left them out
