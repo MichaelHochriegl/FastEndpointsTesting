@@ -55,7 +55,7 @@ public class CreateUserEndpointTests : IClassFixture<ApiWebFactory>
         response.Should().NotBeNull();
         response!.StatusCode.Should().Be(HttpStatusCode.Created);
         result.Should().NotBeNull();
-        result!.Id.Should().Be(1);
+        result!.Id.Should().Be(2);
     }
 
     [Fact]

@@ -61,14 +61,17 @@ public class ApiWebFactory : WebApplicationFactory<IApiMarker>, IAsyncLifetime
             
             // Register our DbContext with the test DB connection string provided from our container
             services.AddPersistence(_database.GetConnectionString());
+            
+            SeedDb(services);
         });
     }
 
-    protected override IHost CreateHost(IHostBuilder builder)
+    private void SeedDb(IServiceCollection services)
     {
-        var host = builder.Build();
-        var serviceScopeFactory = host.Services.GetRequiredService<IServiceScopeFactory>();
-        var dbContext = serviceScopeFactory.CreateScope().ServiceProvider.GetRequiredService<ApiDbContext>();
+        var serviceProvider = services.BuildServiceProvider();
+        using var scope = serviceProvider.CreateScope();
+        var dbContext = scope.ServiceProvider.GetRequiredService<ApiDbContext>();
+        dbContext.Database.Migrate();
         
         var userPresent = dbContext.Users.Any(u => u.FirstName == "SeededUserFirstName");
         if (userPresent is false)
@@ -76,9 +79,6 @@ public class ApiWebFactory : WebApplicationFactory<IApiMarker>, IAsyncLifetime
             dbContext.Users.Add(new User() { FirstName = "SeededUserFirstName", LastName = "SeededUserLastName", Email = "SeededUserEmail" });
         }
         dbContext.SaveChanges();
-    
-        host.Start();
-        return host;
     }
 
     public async Task InitializeAsync()
