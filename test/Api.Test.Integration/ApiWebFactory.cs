@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Threading.Tasks;
+using Api.Domain;
 using Api.Persistence;
 using DotNet.Testcontainers.Builders;
 using DotNet.Testcontainers.Configurations;
@@ -8,7 +9,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Testcontainers.PostgreSql;
 using Xunit;
@@ -58,9 +61,26 @@ public class ApiWebFactory : WebApplicationFactory<IApiMarker>, IAsyncLifetime
             
             // Register our DbContext with the test DB connection string provided from our container
             services.AddPersistence(_database.GetConnectionString());
+            
+            SeedDb(services);
         });
     }
-    
+
+    private void SeedDb(IServiceCollection services)
+    {
+        var serviceProvider = services.BuildServiceProvider();
+        using var scope = serviceProvider.CreateScope();
+        var dbContext = scope.ServiceProvider.GetRequiredService<ApiDbContext>();
+        dbContext.Database.Migrate();
+        
+        var userPresent = dbContext.Users.Any(u => u.FirstName == "SeededUserFirstName");
+        if (userPresent is false)
+        {
+            dbContext.Users.Add(new User() { FirstName = "SeededUserFirstName", LastName = "SeededUserLastName", Email = "SeededUserEmail" });
+        }
+        dbContext.SaveChanges();
+    }
+
     public async Task InitializeAsync()
     {
         // Start up our Docker container with the Postgres DB
